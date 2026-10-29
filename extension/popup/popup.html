@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>BS-EXT</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup">
+      <header>
+        <h1>Bookmark Manager</h1>
+        <button id="openDashboard" title="Open dashboard">Dashboard</button>
+      </header>
+      <div class="search-row">
+        <input id="search" type="text" placeholder="Search bookmarks..." />
+      </div>
+      <div class="actions">
+        <button id="savePage">Save current page</button>
+        <button id="quickSort">Quick sort folder</button>
+        <button id="dupScan">Duplicate scan</button>
+      </div>
+      <div class="dest">
+        <label>Destination folder</label>
+        <select id="destFolder"></select>
+      </div>
+      <section>
+        <h2>Recently added</h2>
+        <ul id="recent"></ul>
+      </section>
+      <footer>
+        <button id="openSettings">Settings</button>
+        <span id="aiStatus">AI: disabled</span>
+      </footer>
+    </div>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

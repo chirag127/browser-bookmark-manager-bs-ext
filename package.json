@@ -1,0 +1,25 @@
+{
+  "name": "browser-bookmark-manager-bs-ext",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Browser Bookmark Manager (BS-EXT): powerful recursive bookmark organization, sorting, duplicate detection, AI categorization, import/export, backup.",
+  "scripts": {
+    "format": "prettier --write \"**/*.{js,json,html,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,json,html,css,md}\"",
+    "lint": "eslint \"extension/**/*.js\" \"tests/**/*.js\" \"scripts/**/*.js\"",
+    "lint:fix": "eslint \"extension/**/*.js\" \"tests/**/*.js\" \"scripts/**/*.js\" --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "node scripts/build.js",
+    "build:ext": "node scripts/build.js",
+    "validate:manifest": "node scripts/validate-manifest.js",
+    "preview:website": "npx http-server . -p 8080"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.9",
+    "eslint": "^8.57.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.3.3",
+    "vitest": "^2.1.9"
+  }
+}

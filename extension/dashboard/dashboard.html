@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>BS-EXT Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">BS-EXT</div>
+        <nav id="nav">
+          <button data-view="overview">Overview</button>
+          <button data-view="all">All bookmarks</button>
+          <button data-view="bar">Bookmark bar</button>
+          <button data-view="folders">Folders</button>
+          <button data-view="duplicates">Duplicates</button>
+          <button data-view="domains">Domains</button>
+          <button data-view="tags">Tags</button>
+          <button data-view="rules">Rules</button>
+          <button data-view="ai">AI workspace</button>
+          <button data-view="importexport">Import / Export</button>
+          <button data-view="backups">Backups</button>
+          <button data-view="activity">Activity</button>
+          <button data-view="settings">Settings</button>
+        </nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="breadcrumbs" id="breadcrumbs"></div>
+          <div class="searchbar">
+            <input id="search" type="text" placeholder="Search..." />
+            <select id="scope">
+              <option value="all">All</option>
+              <option value="current">Current folder</option>
+            </select>
+          </div>
+          <div class="toolbar">
+            <button id="sortBtn">Sort</button>
+            <button id="moveBtn">Move</button>
+            <button id="newFolderBtn">New folder</button>
+            <button id="newBookmarkBtn">New bookmark</button>
+            <button id="dupBtn">Scan duplicates</button>
+            <button id="exportBtn">Export</button>
+            <button id="importBtn">Import</button>
+            <button id="backupBtn">Backup</button>
+            <button id="undoBtn">Undo</button>
+          </div>
+        </header>
+        <div class="content" id="content"></div>
+      </main>
+      <aside class="details" id="details"></aside>
+    </div>
+
+    <!-- dialogs -->
+    <dialog id="sortDialog">
+      <form method="dialog">
+        <h3>Sort</h3>
+        <div id="sortKeys"></div>
+        <button type="button" id="addSortKey">Add key</button>
+        <label><input type="checkbox" id="recursiveSort" /> Recursive (all descendants)</label>
+        <label><input type="checkbox" id="folderFirst" /> Folders first</label>
+        <div class="dialog-actions">
+          <button value="cancel">Cancel</button>
+          <button value="preview">Preview</button>
+          <button value="apply">Apply</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="moveDialog">
+      <form method="dialog">
+        <h3>Move selected</h3>
+        <select id="moveDest"></select>
+        <div class="dialog-actions">
+          <button value="cancel">Cancel</button>
+          <button value="apply">Move</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="confirmDialog">
+      <form method="dialog">
+        <p id="confirmMsg"></p>
+        <div class="dialog-actions">
+          <button value="cancel">Cancel</button>
+          <button value="ok">Confirm</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="previewDialog">
+      <form method="dialog">
+        <h3>Preview</h3>
+        <div id="previewBody" style="max-height: 400px; overflow: auto"></div>
+        <div class="dialog-actions">
+          <button value="cancel">Cancel</button>
+          <button value="apply">Apply</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="dashboard.js"></script>
+  </body>
+</html>

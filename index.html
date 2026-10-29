@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Browser Bookmark Manager (BS-EXT)</title>
+    <meta
+      name="description"
+      content="Powerful recursive bookmark organization, sorting, duplicate detection, AI categorization, import/export, and backup."
+    />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 0;
+        background: #f8fafc;
+        color: #0f172a;
+      }
+      header {
+        background: #1e3a8a;
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+      }
+      h1 {
+        margin: 0 0 8px;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 16px 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 16px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        margin: 4px;
+      }
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #64748b;
+        font-size: 13px;
+      }
+      code {
+        background: #e2e8f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Browser Bookmark Manager</h1>
+      <p>
+        BS-EXT — take control of thousands of bookmarks with recursive sorting, duplicate detection,
+        AI categorization, and safe recovery.
+      </p>
+      <a class="btn" href="https://github.com/chirag127/browser-bookmark-manager-bs-ext"
+        >View on GitHub</a
+      >
+      <a class="btn" href="privacy.html">Privacy</a>
+    </header>
+    <div class="container">
+      <div class="card">
+        <h2>Features</h2>
+        <div class="grid">
+          <div>
+            <h3>Recursive sorting</h3>
+            <p>
+              Multi-key sorting at every folder level, with domain-aware grouping and public-suffix
+              handling.
+            </p>
+          </div>
+          <div>
+            <h3>Duplicate detection</h3>
+            <p>Configurable normalization profiles with review before deletion.</p>
+          </div>
+          <div>
+            <h3>Folder management</h3>
+            <p>Create, move, merge, split by domain or category, with previews.</p>
+          </div>
+          <div>
+            <h3>Bookmark bar</h3>
+            <p>Explicit migration wizard — never moves data automatically.</p>
+          </div>
+          <div>
+            <h3>AI categorization</h3>
+            <p>
+              Optional, opt-in, supports Gemini, OpenRouter, Groq, Mistral, custom OpenAI-compatible
+              endpoints.
+            </p>
+          </div>
+          <div>
+            <h3>Import / Export</h3>
+            <p>Netscape HTML and versioned JSON backups with restore preview.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Installation (unpacked)</h2>
+        <ol>
+          <li>Download the latest release ZIP.</li>
+          <li>Open <code>chrome://extensions</code> and enable Developer mode.</li>
+          <li>
+            Click "Load unpacked" and select the <code>extension</code> (or <code>dist</code>)
+            folder.
+          </li>
+        </ol>
+      </div>
+      <div class="card">
+        <h2>Privacy</h2>
+        <p>
+          Bookmarks stay on your device. AI features are opt-in and require your own API key. No
+          analytics or telemetry by default.
+        </p>
+        <a href="privacy.html">Read the full privacy policy</a>
+      </div>
+    </div>
+    <footer>
+      Browser Bookmark Manager (BS-EXT) — open source. Not affiliated with any browser vendor.
+    </footer>
+  </body>
+</html>

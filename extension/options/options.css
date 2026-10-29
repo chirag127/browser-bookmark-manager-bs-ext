@@ -1,0 +1,8 @@
+body {
+  font-family: system-ui;
+  padding: 20px;
+}
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}

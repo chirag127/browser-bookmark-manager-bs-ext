@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f5f7fa;
+  color: #1f2937;
+}
+.app {
+  display: grid;
+  grid-template-columns: 220px 1fr 300px;
+  height: 100vh;
+}
+.sidebar {
+  background: #111827;
+  color: #e5e7eb;
+  padding: 12px;
+  overflow: auto;
+}
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+  padding: 8px 0 12px;
+}
+.sidebar nav button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.sidebar nav button:hover {
+  background: #1f2937;
+}
+.sidebar nav button.active {
+  background: #2563eb;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.topbar {
+  background: white;
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.breadcrumbs {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+.searchbar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.searchbar input {
+  flex: 1;
+  padding: 6px;
+}
+.toolbar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.toolbar button {
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 12px;
+}
+.details {
+  background: white;
+  border-left: 1px solid #e5e7eb;
+  padding: 12px;
+  overflow: auto;
+  font-size: 13px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+th,
+td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #f3f4f6;
+  text-align: left;
+  font-size: 13px;
+}
+th {
+  background: #f9fafb;
+  position: sticky;
+  top: 0;
+}
+tr.selected {
+  background: #eff6ff;
+}
+.folder-tree {
+  list-style: none;
+  padding-left: 12px;
+}
+.folder-tree li {
+  padding: 2px 0;
+  cursor: pointer;
+}
+.folder-tree li:hover {
+  color: #2563eb;
+}
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.empty {
+  color: #6b7280;
+  padding: 20px;
+  text-align: center;
+}
+dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 320px;
+}
+.dialog-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.sort-key {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0;
+}
+.sort-key select {
+  flex: 1;
+}

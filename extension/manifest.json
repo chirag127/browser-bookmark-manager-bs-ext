@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Bookmark Manager",
+  "short_name": "BS-EXT",
+  "version": "1.0.0",
+  "description": "Powerful recursive bookmark organization, sorting, duplicate detection, AI categorization, import/export, and backup.",
+  "homepage_url": "https://chirag127.github.io/browser-bookmark-manager-bs-ext/",
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "permissions": ["bookmarks", "storage"],
+  "optional_permissions": ["tabs", "activeTab"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "background/sw.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "32": "assets/icon32.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    },
+    "default_title": "Browser Bookmark Manager"
+  },
+  "options_page": "options/options.html",
+  "commands": {
+    "open-dashboard": {
+      "suggested_key": { "default": "Ctrl+Shift+B" },
+      "description": "Open the bookmark dashboard"
+    },
+    "focus-search": {
+      "suggested_key": { "default": "Ctrl+Shift+F" },
+      "description": "Focus search"
+    }
+  }
+}
