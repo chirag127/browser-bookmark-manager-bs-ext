@@ -1,4 +1,4 @@
-name: CI
+﻿name: CI
 on:
   push:
     branches: [main]
@@ -8,6 +8,9 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: browser-bookmark-manager-bs-ext
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,9 +37,11 @@ jobs:
         with:
           node-version: 20
       - run: npm ci || npm install
+        working-directory: browser-bookmark-manager-bs-ext
       - run: npm run build
+        working-directory: browser-bookmark-manager-bs-ext
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: browser-bookmark-manager-bs-ext
       - id: deployment
         uses: actions/deploy-pages@v4
