@@ -237,3 +237,167 @@ git push origin main
 - Firefox Developer Hub: https://addons.mozilla.org/developers/
 
 
+# Store Assets Guide — Browser Bookmark Manager (BS-EXT)
+
+This document lists every image/icon required by each store, what we generated, and what NOT to upload.
+
+Generated assets live in: `browser-bookmark-manager-bs-ext/store-assets/`
+Extension icons live in: `browser-bookmark-manager-bs-ext/extension/assets/`
+
+---
+
+## Browser support matrix
+
+| Browser | Engine | Manifest | Status | Notes |
+|---|---|---|---|---|
+| Google Chrome | Chromium | MV3 | Supported (primary) | Full feature set |
+| Microsoft Edge | Chromium | MV3 | Supported | Same package as Chrome |
+| Brave | Chromium | MV3 | Supported | Same package |
+| Opera | Chromium | MV3 | Supported | Same package (Opera Add-ons optional) |
+| Vivaldi | Chromium | MV3 | Supported | Same package |
+| Firefox | Gecko | MV3* | Not yet (port needed) | Requires `browser.*` API + gecko id; see MANUAL_STEPS §6 |
+| Safari | WebKit | — | Not supported | Different extension model (not planned) |
+| Mobile browsers | — | — | Not supported | Desktop only |
+
+\* Firefox supports MV3 in recent versions but needs a separate build.
+
+---
+
+## Upload cost per platform
+
+| Platform | Registration cost | Listing fee | Notes |
+|---|---|---|---|
+| Chrome Web Store | **$5 USD one-time** (payment card required by Google) | Free | Mandatory for any CWS developer |
+| Microsoft Edge Add-ons | Free | Free | Microsoft account (MSA) required |
+| Firefox AMO | Free | Free | Mozilla account required |
+| Opera Add-ons | Free | Free | Optional; same Chromium package |
+| GitHub Pages (website) | Free | Free | No card required |
+
+---
+
+## Icons (in extension ZIP)
+
+Required inside the extension package (manifest `icons`):
+
+| Size | File | Purpose |
+|---|---|---|
+| 16x16 | `extension/assets/icon16.png` | Toolbar / favicon |
+| 32x32 | `extension/assets/icon32.png` | Windows taskbar |
+| 48x48 | `extension/assets/icon48.png` | Extension management page |
+| 128x128 | `extension/assets/icon128.png` | Store listing + install dialog |
+
+We also generated: 64, 96, 256 (for Firefox/Opera) in the same folder. Extra sizes are harmless.
+
+Format: PNG, square, no transparency issues (opaque background recommended). Do NOT use SVG for store icons (Chrome requires PNG in ZIP; SVG allowed in manifest for some contexts but PNG is safest).
+
+---
+
+## Chrome Web Store — upload requirements
+
+### Required
+- ZIP of `dist/` contents (extension package).
+- 128x128 icon (inside ZIP, referenced by manifest).
+- At least **1 screenshot**: 1280x800 OR 640x400, PNG/JPEG, **no padding, square corners**, no alpha.
+- Up to 5 screenshots.
+- Short description ≤ 132 characters.
+- Privacy policy URL.
+
+### Optional (recommended)
+- Small promo tile: **440x280** PNG/JPEG.
+- Marquee promo tile: **1400x560** PNG/JPEG.
+- YouTube video link.
+
+### What NOT to upload to CWS
+- Source maps with secrets, `.env`, `node_modules/`, `tests/`, `scripts/`, `dist/` (upload the *contents* of dist, not the folder).
+- More than 5 screenshots.
+- Images with rounded corners or padding (store adds its own).
+- Trademarked third-party logos without permission.
+
+Generated files:
+- `store-assets/screenshot-1280x800.png`
+- `store-assets/screenshot-640x400.png`
+- `store-assets/promo-440x280.png`
+- `store-assets/promo-1400x560.png`
+- `store-assets/icon-128.png`, `icon-256.png`, `icon-512.png`
+
+Reference: https://developer.chrome.com/docs/webstore/images
+
+---
+
+## Microsoft Edge Add-ons — upload requirements
+
+Same as Chrome (Chromium package). Image requirements:
+- Icon 128x128 (in ZIP).
+- Screenshots: 1280x800 or 640x400 (min 1, max 10).
+- Optional small tile 440x280, large tile 1400x560.
+- Privacy policy URL.
+
+Use the same generated assets. No separate build needed.
+
+Reference: https://learn.microsoft.com/en-us/microsoft-edge/extensions/publish/publish-extension
+
+---
+
+## Firefox AMO — upload requirements
+
+### Package
+- ZIP of extension files (same structure; needs `browser_specific_settings.gecko.id` for MV3).
+- Source code ZIP may be required if code is minified/obfuscated (ours is not minified, but provide source anyway for safety).
+
+### Images
+- Icon: 32x32, 64x64, 128x128 (AMO scales). Provide 256 for high-DPI.
+- Screenshots: recommended 1280x800 or 1920x1080; min 320x240; max 3840x2160.
+- No specific promo tile required; AMO uses icon + screenshots.
+
+### What NOT to upload to AMO
+- Minified code without source.
+- Remote code (AMO policy prohibits).
+- Executable binaries.
+
+Generated: reuse `store-assets/screenshot-1280x800.png` and `icon-128.png`/`icon-256.png`.
+
+Reference: https://extensionworkshop.com/documentation/publish/submitting-an-add-on/
+
+---
+
+## Opera Add-ons — upload requirements (optional)
+
+- Same Chromium package.
+- Icon 256x256 recommended.
+- Screenshots 1280x800.
+- Use `store-assets/icon-256.png`.
+
+Reference: https://dev.opera.com/extensions/publishing-guidelines/
+
+---
+
+## Image design guidelines (all stores)
+
+1. **Screenshots must show the actual UI** — replace generated mockups with real captures before final submission. Mockups are placeholders.
+2. **No misleading imagery** — do not fabricate user counts, ratings, or testimonials.
+3. **Readable text** — minimum 14px equivalent; high contrast.
+4. **Consistent branding** — navy (#1e3a8a) + blue (#2563eb) palette, white bookmark icon.
+5. **No third-party trademarks** without permission.
+6. **Privacy policy link** must be live before submission.
+7. **Icons:** keep simple; recognizable at 16px.
+
+---
+
+## What to upload vs. not upload (summary)
+
+| Upload | Do NOT upload |
+|---|---|
+| `dist/*` contents zipped | `node_modules/`, `tests/`, `scripts/`, `.git/` |
+| `icon16/32/48/128.png` (in ZIP) | Source maps with secrets |
+| Screenshots (store dashboard) | `.env` files |
+| Privacy policy URL | API keys / credentials |
+| Short + full description | Fake testimonials / user counts |
+| Promo tiles (optional) | Unlicensed third-party assets |
+
+---
+
+## File naming convention for final submission ZIPs
+
+- `bs-ext-chrome-1.0.0.zip` — Chrome/Edge/Opera/Brave/Vivaldi
+- `bs-ext-firefox-1.0.0.zip` — Firefox (when ported)
+- `bs-ext-source-1.0.0.zip` — source code for AMO review
