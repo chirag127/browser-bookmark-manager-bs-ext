@@ -401,3 +401,160 @@ Reference: https://dev.opera.com/extensions/publishing-guidelines/
 - `bs-ext-chrome-1.0.0.zip` — Chrome/Edge/Opera/Brave/Vivaldi
 - `bs-ext-firefox-1.0.0.zip` — Firefox (when ported)
 - `bs-ext-source-1.0.0.zip` — source code for AMO review
+---
+
+# Part II — All Browser Extension Stores: Links, Accounts, and Upload Steps
+
+This section covers **every** major extension store where this extension can be published, with direct links and step-by-step upload instructions.
+
+---
+
+## A. Google Chrome Web Store (CWS)
+
+- Developer dashboard: https://chrome.google.com/webstore/devconsole/
+- Publish docs: https://developer.chrome.com/docs/webstore/publish
+- Image requirements: https://developer.chrome.com/docs/webstore/images
+- Registration: https://developer.chrome.com/docs/webstore/register
+- Review/updates blog: https://developer.chrome.com/blog/cws-review-updates-2026
+
+**Account cost:** one-time $5 USD (payment card required by Google).
+
+**Steps to create & upload:**
+1. Open https://chrome.google.com/webstore/devconsole/ → sign in with Google account.
+2. Pay the $5 registration fee if not already registered.
+3. Click **New item**.
+4. Upload the ZIP (`bs-ext-chrome-1.0.0.zip`).
+5. **Store listing tab:** name, summary (≤132 chars), description, category (Productivity), language, screenshots (1280x800 or 640x400, 1–5), icon (128x128 from ZIP), optional promo tiles (440x280, 1400x560).
+6. **Privacy tab:** single purpose = bookmark management; permission justifications (see MANUAL_STEPS §3.3); privacy policy URL = https://chirag127.github.io/browser-bookmark-manager-bs-ext/privacy.html; data usage disclosures.
+7. **Distribution tab:** regions.
+8. Click **Submit for review**.
+9. Monitor status in dashboard. Review: ~1–3 days.
+
+**Manifest:** MV3 (`manifest_version: 3`). Already set.
+
+---
+
+## B. Microsoft Edge Add-ons
+
+- Developer portal: https://partner.microsoft.com/dashboard/microsoftedge/overview
+- Registration: https://learn.microsoft.com/en-us/microsoft-edge/extensions/publish/create-dev-account
+- Publish guide: https://learn.microsoft.com/en-us/microsoft-edge/extensions/publish/publish-extension
+- Submission states: https://learn.microsoft.com/en-us/microsoft-edge/extensions/publish/submission-states
+
+**Account cost:** Free. Microsoft account (MSA) required (Outlook/Live/Hotmail). Work accounts not accepted.
+
+**Steps to create & upload:**
+1. Open https://partner.microsoft.com/dashboard/microsoftedge/overview → sign in with MSA.
+2. Complete developer registration (no fee).
+3. Click **Create new extension**.
+4. Upload the same Chromium ZIP.
+5. Fill listing: name, description, category, screenshots (1280x800 or 640x400, 1–10), icon, privacy policy URL.
+6. Permission justifications (same as Chrome).
+7. Submit. Review: ~1–7 days.
+
+**Manifest:** MV3. Same package as Chrome — no changes needed.
+
+---
+
+## C. Firefox Add-ons (AMO)
+
+- Developer hub: https://addons.mozilla.org/developers/
+- Submit new add-on: https://addons.mozilla.org/developers/addon/submit/
+- Submitting guide: https://extensionworkshop.com/documentation/publish/submitting-an-add-on/
+- Porting Chrome guide: https://extensionworkshop.com/documentation/develop/porting-a-google-chrome-extension/
+- MV3 migration: https://extensionworkshop.com/documentation/develop/manifest-v3-migration-guide/
+- Source code submission: https://extensionworkshop.com/documentation/publish/source-code-submission/
+
+**Account cost:** Free. Mozilla account required.
+
+**Steps to create & upload (after Firefox build exists):**
+1. Open https://addons.mozilla.org/developers/ → sign in / create Mozilla account.
+2. Accept developer agreement.
+3. Go to https://addons.mozilla.org/developers/addon/submit/.
+4. Choose **On this site** (listed) or **On your own** (self-distributed).
+5. Upload the Firefox ZIP.
+6. If code is minified, also upload source code ZIP + build instructions.
+7. Fill metadata: name, summary, description (Markdown supported), categories, tags, screenshots (1280x800 recommended), icon (128x128/256).
+8. Set license, privacy policy URL.
+9. Submit for review.
+
+**Manifest:** Requires `browser_specific_settings.gecko.id` and `browser.*` API usage. See MANUAL_STEPS §6 (Firefox build).
+
+---
+
+## D. Opera Add-ons
+
+- Developer portal: https://addons.opera.com/developer/
+- Publishing guidelines: https://dev.opera.com/extensions/publishing-guidelines/
+
+**Account cost:** Free.
+
+**Steps:**
+1. Open https://addons.opera.com/developer/ → create account.
+2. Upload the Chromium ZIP (same as Chrome).
+3. Fill listing, screenshots (1280x800), icon (256x256 recommended).
+4. Submit for review.
+
+**Manifest:** MV3. Same package as Chrome.
+
+---
+
+## E. Brave / Vivaldi / other Chromium browsers
+
+These browsers install extensions from the **Chrome Web Store**. No separate store submission needed. Once published on CWS, users on Brave/Vivaldi can install directly.
+
+- Brave: https://brave.com/ (uses CWS)
+- Vivaldi: https://vivaldi.com/ (uses CWS)
+
+---
+
+## F. Safari (Apple) — NOT supported
+
+- Safari extensions use a different model (Xcode + Apple Developer Program, $99/year).
+- Not planned for this project. If needed later: https://developer.apple.com/safari/extensions/
+
+---
+
+## G. Naver Whale Store (optional, Korea)
+
+- Developer: https://store.whale.naver.com/developers
+- Uses Chromium extensions. Free.
+
+---
+
+## H. GitHub (source + website) — already done
+
+- Repository: https://github.com/chirag127/browser-bookmark-manager-bs-ext
+- Website: https://chirag127.github.io/browser-bookmark-manager-bs-ext/ (enable Pages — see MANUAL_STEPS §1)
+- Releases: https://github.com/chirag127/browser-bookmark-manager-bs-ext/releases (create a release + attach ZIPs)
+
+**Create a GitHub Release (copy-paste):**
+1. Open https://github.com/chirag127/browser-bookmark-manager-bs-ext/releases/new
+2. Tag: `v1.0.0`, target: `main`, title: `v1.0.0`
+3. Description: paste CHANGELOG.md contents.
+4. Attach `bs-ext-chrome-1.0.0.zip` (and source zip).
+5. Click **Publish release**.
+
+---
+
+## Quick reference: where to upload what
+
+| Artifact | Upload to |
+|---|---|
+| `bs-ext-chrome-1.0.0.zip` | CWS, Edge Add-ons, Opera Add-ons, GitHub Releases |
+| `bs-ext-firefox-1.0.0.zip` | AMO, GitHub Releases (when ported) |
+| `bs-ext-source-1.0.0.zip` | AMO (source code submission) |
+| `store-assets/*.png` | Store dashboards (screenshots/promo) — NOT in extension ZIP |
+| `extension/assets/icon*.png` | Inside extension ZIP (manifest icons) |
+| `index.html` / `privacy.html` | GitHub Pages (auto-deployed) |
+
+---
+
+## What NOT to upload anywhere
+
+- `node_modules/`, `tests/`, `scripts/`, `.git/`
+- `.env` or any file with API keys
+- Source maps containing secrets
+- Fake testimonials, user counts, or ratings
+- Unlicensed third-party logos/icons
+- More screenshots than the store allows (CWS max 5, Edge max 10)
